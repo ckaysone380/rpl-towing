@@ -7,15 +7,15 @@ local ropes = {}
 if Config.useQBCORE then
     TriggerEvent('QBCore:GetObject', function(obj) QBCORE = obj end)
     QBCore.Functions.CreateUseableItem(Config.towRopeItem, function(source)
-        TriggerClientEvent('kuz_towing:openTowingMenu', source)
+        TriggerClientEvent('rpl-towing:openTowingMenu', source)
     end)
 end
 
-RegisterServerEvent("kuz_towing:tow")
-AddEventHandler("kuz_towing:tow", function(veh1, veh2)
+RegisterServerEvent("rpl-towing:tow")
+AddEventHandler("rpl-towing:tow", function(veh1, veh2)
     local allPlayers = GetPlayers()
     for k, player in pairs(allPlayers) do
-        TriggerClientEvent('kuz_towing:makeRope', player, veh1, veh2, source)
+        TriggerClientEvent('rpl-towing:makeRope', player, veh1, veh2, source)
     end
     table.insert(ropes, {veh1, veh2, source})
 end)
@@ -33,20 +33,20 @@ function refreshRopes()
     if #ropes > 0 then
         for k, rope in pairs(ropes) do
             for i, player in pairs(allPlayers) do
-                TriggerClientEvent('kuz_towing:makeRope', player, rope[1], rope[2], rope[3], rope[3] == player)
+                TriggerClientEvent('rpl-towing:makeRope', player, rope[1], rope[2], rope[3], rope[3] == player)
             end
         end
     end
 end
 
-RegisterServerEvent("kuz_towing:stopTow")
-AddEventHandler("kuz_towing:stopTow", function()
+RegisterServerEvent("rpl-towing:stopTow")
+AddEventHandler("rpl-towing:stopTow", function()
     local allPlayers = GetPlayers()
 
     for k, rope in pairs(ropes) do
         if rope[3] == source then
             for i, player in pairs(allPlayers) do
-                TriggerClientEvent('kuz_towing:removeRope', player, source, rope[1], rope[2])
+                TriggerClientEvent('rpl-towing:removeRope', player, source, rope[1], rope[2])
                 ropes[k] = nil
             end
         end
