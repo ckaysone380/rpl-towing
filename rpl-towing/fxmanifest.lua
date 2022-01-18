@@ -1,3 +1,4 @@
+--Do not repost without Remaboy's Permission--
 fx_version 'cerulean'
 games      { 'gta5' }
 
