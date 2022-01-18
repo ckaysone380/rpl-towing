@@ -51,8 +51,8 @@ if Config.useTowingCommand then
     end)
 end
 
-RegisterNetEvent('kuz_towing:openTowingMenu')
-AddEventHandler('kuz_towing:openTowingMenu', function()
+RegisterNetEvent('rpl-towing:openTowingMenu')
+AddEventHandler('rpl-towing:openTowingMenu', function()
     OpenTowingMenu()
 end)
 
@@ -155,7 +155,7 @@ end)
 function DetachRope()
     if entity1 and entity2 then
         CloseTowingMenu()
-        TriggerServerEvent('kuz_towing:stopTow')
+        TriggerServerEvent('rpl-towing:stopTow')
         DeleteRope(localRope)
         SetEntityMaxSpeed(entity1, 99999.0)
         SetEntityMaxSpeed(entity2, 99999.0)
@@ -186,7 +186,7 @@ function AttemptAttachRope()
         SetRopesCreateNetworkWorldState(false)
         local veh1 = NetworkGetNetworkIdFromEntity(entity1)
         local veh2 = NetworkGetNetworkIdFromEntity(entity2)
-        TriggerServerEvent('kuz_towing:tow', veh1, veh2)
+        TriggerServerEvent('rpl-towing:tow', veh1, veh2)
         CloseTowingMenu()
         if tempRope ~= nil then
             DeleteRope(tempRope)
@@ -316,8 +316,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('kuz_towing:removeRope')
-AddEventHandler('kuz_towing:removeRope', function(id, veh1_, veh2_)
+RegisterNetEvent('rpl-towing:removeRope')
+AddEventHandler('rpl-towing:removeRope', function(id, veh1_, veh2_)
     for k, rope in pairs(ropes) do
         if rope.id == id then
             DeleteRope(rope.rope)
@@ -332,8 +332,8 @@ AddEventHandler('kuz_towing:removeRope', function(id, veh1_, veh2_)
     end
 end)
 
-RegisterNetEvent('kuz_towing:makeRope')
-AddEventHandler('kuz_towing:makeRope', function(veh1_, veh2_, id, owner)
+RegisterNetEvent('rpl-towing:makeRope')
+AddEventHandler('rpl-towing:makeRope', function(veh1_, veh2_, id, owner)
     for k, rope in pairs(ropes) do
         if rope.id == id then
             DeleteRope(rope.rope)
