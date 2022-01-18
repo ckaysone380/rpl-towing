@@ -43,7 +43,7 @@
         }
 
         $(document).on('click', '#car1', function() {
-            fetch(`https://kuz_towing/ConnectFront`, {
+            fetch(`https://rpl-towing/ConnectFront`, {
                 method: 'POST',
             }).then(resp => resp.json())
                 .then(resp => {
@@ -60,7 +60,7 @@
         });
 
         $(document).on('click', '#car2', function() {
-            fetch(`https://kuz_towing/ConnectRear`, {
+            fetch(`https://rpl-towing/ConnectRear`, {
                 method: 'POST',
             }).then(resp => resp.json())
                 .then(resp => {
@@ -83,7 +83,7 @@
         }
 
         $(document).on('click', '#detach-button', function() {
-            fetch(`https://kuz_towing/DetachRope`, {
+            fetch(`https://rpl-towing/DetachRope`, {
                 method: 'POST',
             });
             reset();
@@ -110,13 +110,13 @@
         document.addEventListener('keyup', logKey);
         function logKey(e) {
             if (e.key === 'Escape' || e.key === 'Backspace' || e.key === 'e' || e.key === ' ') {
-                fetch(`https://kuz_towing/CloseTowingMenu`, {
+                fetch(`https://rpl-towing/CloseTowingMenu`, {
                     method: 'POST',
                 })
             }
         }
 
-        fetch(`https://kuz_towing/FetchLocale`, {
+        fetch(`https://rpl-towing/FetchLocale`, {
             method: 'POST',
         });
     });
